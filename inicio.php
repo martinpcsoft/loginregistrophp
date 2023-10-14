@@ -1,3 +1,10 @@
+<!-- Si esta logueado no puede ingresar -->
+<?php session_start();
+if (!isset($_SESSION ['usuario'])){
+    header("location:index.php");
+
+};
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,6 +15,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link  rel="stylesheet" href="public/css/login.css">
+    <link  rel="stylesheet" href="public/inicio.css">
     <title>LOGIN DE USUARIO</title>
   </head>
   <body>
@@ -28,16 +36,12 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a  style="color:red" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php echo $_SESSION ['usuario']?>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="servidor/login/salir.php">Salir de Sistema</a></li>
+           
           </ul>
         </li>
       </ul>
@@ -51,8 +55,12 @@
   <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap! Make sure to set the height
     of the logo within the HTML or using CSS. For best results, use an SVG image as your logo.</p>
 </div>
+
+
+
+<img class="img2">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    
+
 </body>
 </html>
